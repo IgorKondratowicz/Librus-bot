@@ -1,1 +1,1 @@
-# Librus-bot
+Simple Librus bot using selenium
