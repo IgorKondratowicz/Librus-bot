@@ -41,7 +41,8 @@ class Librus:
         pass_box.send_keys(password)
         sleep(1)
         log_button = self.driver.find_element(By.ID, 'LoginBtn')
-        log_button.click()
+        log_button.click() 
+        
         
     def get_pass(self):
         login = input("Login: ")
