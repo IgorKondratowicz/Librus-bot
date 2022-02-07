@@ -1,18 +1,18 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-
+from gui import Application
 from time import sleep
 
 
-
 class Librus:
-    def __init__(self):
+    def __init__(self, login, password):
         self.base_url = "https://portal.librus.pl/rodzina/home"
         options = Options()
         options.add_experimental_option("detach", True)
         
-        login, password = self.get_pass()
+        self.login = login
+        self.password = password
 
         self.driver = webdriver.Chrome(options=options)
         self.driver.maximize_window()
@@ -20,7 +20,9 @@ class Librus:
         self.driver.get(self.base_url)
         sleep(2)
 
-        self.synergia(login, password)
+        self.synergia(self.login, self.password)
+
+        
         
     def synergia(self, login, password):
         box = self.driver.find_element(By.CLASS_NAME, "btn-synergia-top")
@@ -42,12 +44,16 @@ class Librus:
         sleep(1)
         log_button = self.driver.find_element(By.ID, 'LoginBtn')
         log_button.click() 
+
+
+        oceny = self.driver.find_element(By.ID, 'icon-oceny')
+        sleep(1)
+        oceny.click()
         
         
-    def get_pass(self):
-        login = input("Login: ")
-        password = input("Password: ")
-        return login, password
-        
-        
-Librus()
+if __name__ == "__main__":
+    gui = Application()
+    gui.mainloop()
+    Librus(gui.login, gui.password)
+    
+    
