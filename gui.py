@@ -15,10 +15,11 @@ class Application(tk.Tk):
         self.geometry("400x300")
         self.title("Librus Bot")
         self.resizable(0, 0)
+        self.create_elements()
 
     def get_entry_values(self):
         """ Getting values from input """
-        
+
         self.login = self.login_entry.get()
         self.password = self.password_entry.get()
         self.destroy()
@@ -41,5 +42,4 @@ class Application(tk.Tk):
 
 if __name__ == "__main__":
     app = Application()
-    app.create_elements()
     app.mainloop()

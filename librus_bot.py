@@ -31,7 +31,6 @@ class Librus:
         """
         Redirecting to Librus login page
         """
-        
         box = self.driver.find_element(By.CLASS_NAME, "btn-synergia-top")
         box.click()
         sleep(1)
@@ -63,7 +62,6 @@ class Librus:
 
 if __name__ == "__main__":
     gui = Application()
-    gui.create_elements()
     gui.mainloop()
     if gui.login != "" and gui.password != "":
         Librus(gui.login, gui.password)
