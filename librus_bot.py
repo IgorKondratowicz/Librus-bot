@@ -45,15 +45,15 @@ class Librus:
         log_button = self.driver.find_element(By.ID, 'LoginBtn')
         log_button.click() 
 
-
-        oceny = self.driver.find_element(By.ID, 'icon-oceny')
-        sleep(1)
-        oceny.click()
         
         
 if __name__ == "__main__":
     gui = Application()
     gui.mainloop()
-    Librus(gui.login, gui.password)
+    try: 
+        if gui.login != "" and gui.password != "":
+            Librus(gui.login, gui.password)
+    except:
+        pass
     
     
